@@ -1,0 +1,2 @@
+rdflib>=6.0,<7
+SPARQLWrapper>=2.0,<3

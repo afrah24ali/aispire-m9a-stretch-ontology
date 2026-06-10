@@ -1,0 +1,71 @@
+@prefix : <http://example.org/jordan-trails/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Trail a rdfs:Class ;
+    skos:prefLabel "Trail" .
+
+:HikingTrail a rdfs:Class ;
+    rdfs:subClassOf :Trail ;
+    skos:prefLabel "Hiking trail" ;
+    skos:altLabel "Walking trail" .
+
+:Terrain a rdfs:Class ;
+    skos:prefLabel "Terrain" .
+
+:Region a rdfs:Class ;
+    skos:prefLabel "Region" .
+
+:Difficulty a rdfs:Class ;
+    skos:prefLabel "Difficulty level" .
+
+:AjlounForestTrail a :HikingTrail ;
+    skos:prefLabel "Ajloun Forest Trail" ;
+    :locatedIn :AjlounRegion ;
+    :hasTerrain :ForestTerrain ;
+    :hasDifficulty :EasyDifficulty ;
+    :distanceKm "4.2"^^xsd:decimal .
+
+:WadiMujibTrail a :HikingTrail ;
+    skos:prefLabel "Wadi Mujib Trail" ;
+    skos:altLabel "Mujib Biosphere Trail" ;
+    :locatedIn :DeadSeaRegion ;
+    :hasTerrain :CanyonTerrain ;
+    :hasDifficulty :HardDifficulty .
+
+:ForestTerrain a :Terrain ;
+    skos:prefLabel "Forest terrain" ;
+    skos:altLabel "Woodland terrain" .
+
+:CanyonTerrain a :Terrain ;
+    skos:prefLabel "Canyon terrain" .
+
+:AjlounRegion a :Region ;
+    skos:prefLabel "Ajloun" .
+
+:DeadSeaRegion a :Region ;
+    skos:prefLabel "Dead Sea" ;
+    skos:altLabel "Salt Sea" .
+
+:EasyDifficulty a :Difficulty ;
+    skos:prefLabel "Easy" .
+
+:HardDifficulty a :Difficulty ;
+    skos:prefLabel "Hard" .
+
+:locatedIn a rdf:Property ;
+    rdfs:domain :Trail ;
+    rdfs:range :Region .
+
+:hasTerrain a rdf:Property ;
+    rdfs:domain :Trail ;
+    rdfs:range :Terrain .
+
+:hasDifficulty a rdf:Property ;
+    rdfs:domain :Trail ;
+    rdfs:range :Difficulty .
+
+:distanceKm a rdf:Property ;
+    rdfs:domain :Trail .
